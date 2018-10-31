@@ -21,7 +21,7 @@ nX2 = size(X2,1);
 
 R = zeros(nX1,nX2);
 D = zeros(nX1,nX2);
-PD  = zeros(nX1,nX2);
+
 
 %% Calculating the correlation matrix R
 for i = 1:nX1
