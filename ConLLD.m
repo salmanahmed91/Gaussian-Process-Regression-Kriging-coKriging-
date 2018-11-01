@@ -18,6 +18,10 @@ else
    %logDetR = log(det(R));
     logDetR = 2*sum(log(abs(diag(L))));
     negLogLik = -( -ne/2*log(sigma2) - 1/2 * logDetR) ;
+    
+    if(negLogLik == -Inf)
+        negLogLik = -1e-12;
+    end
 end
 
 

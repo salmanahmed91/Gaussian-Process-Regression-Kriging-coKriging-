@@ -9,8 +9,8 @@ function R = Rcorr_GAUSS(theta_P,X1,X2)
 theta = theta_P(1,1);
 %T1 = theta_P(1,3);
 %T2 = theta_P(1,4);
-P  = theta_P(1,2);
-
+%P  = theta_P(1,2);
+%P = 2;
 %%
 
 

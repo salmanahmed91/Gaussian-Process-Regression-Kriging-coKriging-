@@ -59,8 +59,8 @@ c = [rhoOPT*sigma2C*Rc_Ci ;
 
 fSUR(i) = muFINAL + c'*(C\(Y - oneVCT*muFINAL));
 
-sigma2 = rhoOPT^2*sigma2C + sigma2E - c'*(C\c) ;% (1 - oneVCT'*(C\c))/(oneVCT'*(C\oneVCT));
-if(sigma2 < -1e-12)
+sigma2 = rhoOPT^2*sigma2C + sigma2E - c'*(C\c) ;%(1 - oneVCT'*(C\c))/(oneVCT'*(C\oneVCT));
+if(sigma2 < -0.1)
     sigma2 = 0;
 end
 sigma(i) = sqrt(sigma2);

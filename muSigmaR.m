@@ -1,4 +1,4 @@
-function [mu, sigma, R,L, p] = muSigmaR(theta_P,X,Y,varargin)
+function [mu, sigma2, R,L, p] = muSigmaR(theta_P,X,Y,varargin)
 
 n = size(X,1);
 
@@ -10,15 +10,15 @@ R = Rcorr(theta_P,X,X,varargin{:});
 
 if(p>0)
     mu = nan;
-    sigma = nan;
+    sigma2 = nan;
 else
     %replace R\ by L\(L'
 mu = (ones(n,1)'*(L\(L'\Y)))/(ones(n,1)'*(L\(L'\ones(n,1))));
 
-sigma = (Y-ones(n,1)*mu)'*(L\(L'\(Y-ones(n,1)*mu)))/n;
+sigma2 = (Y-ones(n,1)*mu)'*(L\(L'\(Y-ones(n,1)*mu)))/n;
 
-if sigma <= 0
-    sigma = 1e-5;
+if(sigma2 <= 0)
+    sigma2 = 1e-12;
 end
 
 end
