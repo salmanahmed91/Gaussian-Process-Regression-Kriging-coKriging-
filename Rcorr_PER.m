@@ -6,7 +6,7 @@ function R = Rcorr_PER(theta_P,X1,X2)
 % P   = theta_P((nth)/2 + 1:nth);
 
 %% testing section only
-theta = theta_P(1,1);
+theta = theta_P;
 %T1 = theta_P(1,3);
 %T2 = theta_P(1,4);
 %P  = theta_P(1,2);

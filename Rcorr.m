@@ -21,7 +21,9 @@ else % for newer codes and models
         case 4
         R = Rcorr_GAUSS_SYM(theta_P,X1,X2);
         case 5
-        R = Rcorr_PER(theta_P,X1,X2);    
+        R = Rcorr_PER(theta_P,X1,X2);  
+        case 11
+        R = Rcorr_GAUSS2(theta_P,X1,X2);
     end
 end
     

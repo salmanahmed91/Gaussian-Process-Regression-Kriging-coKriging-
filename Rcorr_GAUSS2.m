@@ -1,11 +1,11 @@
-function R = Rcorr_GAUSS(theta_P,X1,X2)
+function R = Rcorr_GAUSS2(theta_P,X1,X2)
 %% This functaion calculates the correlation between the 
 % points X1 and X2 based on the distance function
-  nth = length(theta_P);
- theta = theta_P(1:nth/2);
- P     = theta_P((nth)/2 + 1:nth);
+%   nth = length(theta_P);
+%  theta = theta_P(1:nth/2);
+%  P     = theta_P((nth)/2 + 1:nth);
 
-%theta = theta_P;
+theta = theta_P;
 
 %% testing section only
 %theta = theta_P(1,1);
@@ -29,8 +29,8 @@ D = zeros(nX1,nX2);
 for i = 1:nX1
     for j = 1:nX2
         for h = 1:k
-        D(i,j) = D(i,j) + theta(h).* abs( X1(i,h) - X2(j,h) ).^(P(h));
-        %D(i,j) = D(i,j) + theta(h).* abs( X1(i,h) - X2(j,h) ).^(2);
+        %D(i,j) = D(i,j) + theta(h).* abs( X1(i,h) - X2(j,h) ).^(P(h));
+        D(i,j) = D(i,j) + theta(h).* abs( X1(i,h) - X2(j,h) ).^(2);
         end
         R(i,j) = exp(  -D(i,j)) ;
     end

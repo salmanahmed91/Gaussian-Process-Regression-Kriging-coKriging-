@@ -1,11 +1,11 @@
 function [indXe, indXrem] = smplSel(X,numXe)
 
-indXs = combnk(1:size(X,1),numXe);
+%indXs = combnk(1:size(X,1),numXe);
 %indXs = randi(size(X,1),size(X,1)*10000,numXe);
-% indXs = zeros(size(X,1)*10000,numXe);
-% for i = 1:size(indXs,1)
-%     indXs(i,:) = randperm(size(X,1),numXe);
-% end
+indXs = zeros(size(X,1)*10000,numXe);
+for i = 1:size(indXs,1)
+    indXs(i,:) = randperm(size(X,1),numXe);
+end
 
 minDs = zeros(size(indXs,1),1);
 for s = 1:size(indXs,1)

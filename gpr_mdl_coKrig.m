@@ -33,17 +33,28 @@ classdef gpr_mdl_coKrig < handle
             [YC_xNew, RMSE_YC_xNew] = obj.gpr_mdl_2D.Eval(x1eTest);
             figure(399)
             plot(YE_xNew,YE_ETest...
-            ,'o','linewidth',2),xlabel('Prediction'),ylabel('Actual'),shg,grid on,hold all;
+            ,'o','linewidth',2,'DisplayName','$\hat{y}_e(\mathbf{x})$'),xlabel('Prediction'),ylabel('Actual'),shg,grid on,hold all;
             plot(YC_xNew,YE_ETest...
-            ,'x','linewidth',2),xlabel('Prediction'),ylabel('Actual'),shg,grid on,legend('show'),legend('GP ye','GP yc')
-            figure(398)
+            ,'x','linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$'),xlabel('Prediction'),ylabel('Actual'),shg,grid on,legend('show'),legend('show')
+            figure(398),hold all
             plot(RMSE_YE_xNew,...
-            'o','linewidth',2),xlabel('test points'),ylabel('Standard Error ($\sigma$)'),grid on,
+            'o','linewidth',2,'DisplayName','$\hat{y}_e(\mathbf{x})$'),xlabel('test points'),ylabel('Standard Error ($\sigma$)'),grid on,
+            plot(RMSE_YC_xNew,...
+            'o','linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$'),xlabel('test points'),ylabel('Standard Error ($\sigma$)'),grid on,
 
-            SCVR = ([YE_ETest] - YE_xNew )./RMSE_YE_xNew;
-            figure(397)
-            plot(YE_xNew,SCVR...
-            ,'o','linewidth',2),xlabel('Prediction'),ylabel('Standard residual [$\sigma$]'),grid on,
+            SCVR_SUR = ([YE_ETest] - YE_xNew )./RMSE_YE_xNew;
+            SCVR_2D = ([YE_ETest] - YC_xNew )./RMSE_YE_xNew;
+            figure(397),hold all;
+            plot(YE_xNew,SCVR_SUR...
+            ,'o','linewidth',2,'DisplayName','$\hat{y}_e(\mathbf{x})$'),xlabel('Prediction'),ylabel('Standard residual [$\sigma$]'),grid on,
+            plot(YE_xNew,SCVR_2D...
+            ,'o','linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$'),xlabel('Prediction'),ylabel('Standard residual [$\sigma$]'),grid on,
+        
+            RMSE_SUR = sqrt(sum((YE_ETest - YE_xNew).^2)./sum(YE_ETest.^2));
+            RMSE_LF = sqrt(sum((YE_ETest - YC_xNew).^2)./sum(YE_ETest.^2));
+            disp(['RMSE multi-fidelity surrogate' num2str(RMSE_SUR)]);
+            disp(['RMSE low-fidelity surrogate' num2str(RMSE_LF)]);
+            
         end
         
                
