@@ -5,7 +5,7 @@ X1C = X;
 [nCase ,nParam] = size(X);
 
 
-%% ------------------ initializing parameters Checking----------------------
+%% ------------------ initializing parameters----------------------
 gpr_mdl    = gpr_mdl_Krig;
 gpr_mdl_rep = gpr_mdl;
 
