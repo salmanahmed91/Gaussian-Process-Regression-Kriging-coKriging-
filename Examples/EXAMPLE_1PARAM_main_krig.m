@@ -3,7 +3,6 @@ clear all;
 close all;
 
 %% Load the data
-fn = @(x)(
 load('lC121_RESP_2D');
 load('lC121');
 nResp = 2;
