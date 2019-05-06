@@ -31,7 +31,7 @@ intCon = [];
 %Limits for hyperparamsfor cokrig mdl
 %%Always set the bounds first at large values to see the trend, and then reduce it
 lbTheta_P_rho = [1e-5.*ones(1,ntheta) 1.01.*ones(1,nP)   -10] ; % Lower Bound of theta 
-ubTheta_P_rho = [1e3*ones(1,ntheta)    1.999.*ones(1,nP) 10]   ; % Upper bounds of theta
+ubTheta_P_rho = [1e2*ones(1,ntheta)    1.999.*ones(1,nP) 10]   ; % Upper bounds of theta
 
 
 %% Script to assign data and response
@@ -45,7 +45,7 @@ YE_ETest = yeTest;
 
 
 
-if (size(x1c,2)==1)
+if (size(XE,2)==1)
     figure(987),hold all;
     plot(gpr_krig.X,gpr_krig.Y,'-o','linewidth',2);
     plot(XE,YE_E,'-x','linewidth',2);

@@ -66,7 +66,7 @@ classdef gpr_mdl_coKrig < handle
                 titleStr = '';
                                                    
                 for k = 1:nX
-                    sweepx = [lb_X(k):(ub_X(k)-lb_X(k))/1000:ub_X(k)]' ;
+                    sweepx = [lb_X(k):(ub_X(k)-lb_X(k))/numXnew:ub_X(k)]' ;
                      if(nX == 1)
                         xNewFixPrt = [sweepx];
                     else
@@ -103,7 +103,8 @@ classdef gpr_mdl_coKrig < handle
                 end
                 title(titleStr);
                 
-                legend('show'),legend('GP ye','GP yc','GP ye+$2\sigma$','GP ye-$2\sigma$','location','northeastoutside');
+                legend('show'),legend('$\hat{y}_e(\mathbf{x})$ co-kriging predictor','$\hat{y}_c(\mathbf{x})$ kriging predictor',...
+                    '$\hat{y}_e(\mathbf{x})$+$2\hat{s}_e(\mathbf{x})$','$\hat{y}_e(\mathbf{x})$-$2\hat{s}_e(\mathbf{x})$','location','northeastoutside');
            
         end
     end

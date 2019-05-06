@@ -45,7 +45,7 @@ classdef gpr_mdl_Krig < handle
                 nX = length(lb_X);
                                                    
                 for k = 1:nX
-                    sweepx = [lb_X(k):(ub_X(k)-lb_X(k))/1000:ub_X(k)]' ;
+                    sweepx = [lb_X(k):(ub_X(k)-lb_X(k))/numXnew:ub_X(k)]' ;
                     if(nX == 1)
                         xNewFixPrt = [sweepx];
                     else
@@ -62,7 +62,7 @@ classdef gpr_mdl_Krig < handle
                     end
                     
                     [YC_xNew, RMSE_YC_xNew] = obj.Eval(xNew);
-                    
+                                        
                     figure(1999)
                      plot(RMSE_YC_xNew,...
                      'o','linewidth',2),xlabel('test points'),ylabel('Standard Error ($\sigma$)'),grid on,
@@ -75,7 +75,7 @@ classdef gpr_mdl_Krig < handle
                     subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew - 2.*RMSE_YC_xNew,'--','linewidth',2),hold all;
                     xlabel(strcat('$',predictorStr(k),'$')),ylabel('Response'),shg,grid on,
                end
-                legend('show'),legend('GP yc','GP yc+$2\sigma$','GP yc-$2\sigma$','northeastoutside');
+                legend('show'),legend('$\hat{y}_c(\mathbf{x})$ LF surrogate','$\hat{y}_c(\mathbf{x})$+$2\hat{s}_c(\mathbf{x})$','$\hat{y}_c(\mathbf{x})$-$2\hat{s}_c(\mathbf{x})$','northeastoutside');
            
         end
     end
