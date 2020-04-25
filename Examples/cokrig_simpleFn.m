@@ -56,7 +56,7 @@ ncTest   = 2;% Choose how many samples you want to use for validation. These
 neTest   = 2;%will not be used in surrogate contruction.
 ncSmpl = ncCase - ncTest;
 neSmpl = neCase - neTest;
-if (not(exist('index.mat')))
+if (not(exist('index.mat'))) %if you change the samples, you need to delete the index.mat before running this code
         [index.indcTest, index.indcSmpl] = smplSel(xcAll,ncTest);
         [index.indeTest, index.indeSmpl] = smplSel(xeAll,neTest);
         save index.mat index;
@@ -67,17 +67,17 @@ indcSmpl = index.indcSmpl;
 indeTest = index.indeTest;
 indeSmpl = index.indeSmpl;
 
-xcSmpl     = xcAll(indcSmpl,:);
-xcTest     = xcAll(indcTest,:);
-ycSmpl     = ycAll(indcSmpl,:);
-ycTest     = ycAll(indcTest,:);
+xcSmpl     = xcAll(indcSmpl,:); %LF samples for surrogate construction
+xcTest     = xcAll(indcTest,:); %LF test samples for cross validation
+ycSmpl     = ycAll(indcSmpl,:); %LF response for surrogate construction
+ycTest     = ycAll(indcTest,:); %LF response for cross validation
 
-xeSmpl     = xeAll(indeSmpl,:);
-xeTest     = xeAll(indeTest,:);
-yeSmpl     = yeAll(indeSmpl,:);
-yeTest     = yeAll(indeTest,:);
+xeSmpl     = xeAll(indeSmpl,:); %HF samples for surrogate construction
+xeTest     = xeAll(indeTest,:); %HF test samples for cross validation
+yeSmpl     = yeAll(indeSmpl,:); %HF response for surrogate construction
+yeTest     = yeAll(indeTest,:); %HF response for cross validation
 
-
+%Up intil here, all the samples were arranged. 
 %% fit_krig(X,y,xTest,yTest,RcorrType,nPop,MaxIt)
 gpr_krig = fit_krig(xcSmpl,ycSmpl,xcTest,ycTest,RcorrType,nPop,MaxIt);
 gpr_krigYE = fit_krig(xeSmpl,yeSmpl,xeTest,yeTest,RcorrType,nPop,MaxIt);
@@ -103,5 +103,5 @@ gpr_cokrig.paramEffects(rsb,csb,effectType,predictorStr,nXnew)
 
 
 
-save('gpr_mdls\gpr_krigYE.mat','gpr_krigYE')
-save('gpr_mdls\gpr_krig.mat','gpr_krig')
+save('gpr_krigYE.mat','gpr_krigYE')
+save('gpr_krig.mat','gpr_krig')
