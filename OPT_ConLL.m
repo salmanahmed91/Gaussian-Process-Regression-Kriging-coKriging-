@@ -15,8 +15,8 @@ gaoptions = optimoptions('ga','Display','iter','PopulationSize',nPop,...
                       'MaxGenerations',MaxIt,...
                       'PlotFcn',{@gaplotbestf @gaplotbestindiv});
 %%Optimize
-[thetaC_PcOPT, fval] = ga(fun,nvars,A,b,Aeq,beq,lb,ub,[],[],gaoptions)
-%[thetaC_PcOPT, fval] = gaYarpiz(fun,nvars,lb,ub,MaxIt,nPop,intCon);
+%[thetaC_PcOPT, fval] = ga(fun,nvars,A,b,Aeq,beq,lb,ub,[],[],gaoptions)
+[thetaC_PcOPT, fval] = gaYarpiz(fun,nvars,lb,ub,MaxIt,nPop,intCon);
 
 [muC, sigma2C, Rc_CC] = muSigmaR(thetaC_PcOPT,x1c,YC_C,RcorrType);
 

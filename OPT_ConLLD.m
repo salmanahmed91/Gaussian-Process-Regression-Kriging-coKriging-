@@ -12,8 +12,8 @@ gaoptions = optimoptions('ga','Display','iter','PopulationSize',nPop,...
                       'MaxGenerations',MaxIt,...
                       'PlotFcn',{@gaplotbestf @gaplotbestindiv});
 %%Optimize
-[thetaE_Pe_rhoOPT, fval] = ga(fun,nvars,[],[],[],[],lb,ub,[],[],gaoptions)
-%[thetaE_Pe_rhoOPT, fval] = gaYarpiz(fun,nvars,lb,ub,MaxIt,nPop,intCon);
+%[thetaE_Pe_rhoOPT, fval] = ga(fun,nvars,[],[],[],[],lb,ub,[],[],gaoptions)
+[thetaE_Pe_rhoOPT, fval] = gaYarpiz(fun,nvars,lb,ub,MaxIt,nPop,intCon);
 
 
 nth = length(thetaE_Pe_rhoOPT);
