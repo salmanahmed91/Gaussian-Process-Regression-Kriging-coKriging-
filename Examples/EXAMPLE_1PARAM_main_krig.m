@@ -3,8 +3,9 @@ clear all;
 close all;
 
 %% Load the data
-load('lC121_RESP_2D');
-load('lC121');
+%load('lC121_RESP_2D');
+%load('lC121');
+
 nResp = 2;
 
 minParam = [13];

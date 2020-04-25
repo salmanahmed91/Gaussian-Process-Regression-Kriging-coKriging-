@@ -68,14 +68,14 @@ classdef gpr_mdl_Krig < handle
                      'o','linewidth',2),xlabel('test points'),ylabel('Standard Error ($\sigma$)'),grid on,
                     
                     figure(1989)
-                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew,'linewidth',2),hold all;
+                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew,'linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$'),hold all;
                     %subplot(1,1,k),plot(x1c,YC(x1c),'o','linewidth',2);hold all;
                     %subplot(1,1,k),plot([x1cTest;x1eTest],YC([x1cTest;x1eTest]),'x','linewidth',4);hold all;
-                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew + 2.*RMSE_YC_xNew,'--','linewidth',2),hold all;
-                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew - 2.*RMSE_YC_xNew,'--','linewidth',2),hold all;
+                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew + 2.*RMSE_YC_xNew,'--','linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$+$2\hat{s}_c(\mathbf{x})$'),hold all;
+                    subplot(rsb,csb,k),plot(xNew(:,k),YC_xNew - 2.*RMSE_YC_xNew,'--','linewidth',2,'DisplayName','$\hat{y}_c(\mathbf{x})$-$2\hat{s}_c(\mathbf{x})$'),hold all;
                     xlabel(strcat('$',predictorStr(k),'$')),ylabel('Response'),shg,grid on,
                end
-                legend('show'),legend('$\hat{y}_c(\mathbf{x})$ LF surrogate','$\hat{y}_c(\mathbf{x})$+$2\hat{s}_c(\mathbf{x})$','$\hat{y}_c(\mathbf{x})$-$2\hat{s}_c(\mathbf{x})$','northeastoutside');
+                legend('show');
            
         end
     end
